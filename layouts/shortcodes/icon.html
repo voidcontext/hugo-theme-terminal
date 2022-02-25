@@ -1,2 +1,2 @@
 {{ $_hugo_config := `{ "version": 1 }` }}
-<i "fa {{ .Get class }}"></i>
+<i {{ with .Get "class" }} class="fa {{ . }}"{{end}}></i>

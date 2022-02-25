@@ -16,6 +16,7 @@ module.exports = (env, { mode }) => ({
     languageSelector: join("assets", "js", "languageSelector.js"),
     prism: join("assets", "js", "prism.js"),
     style: join("assets", "css", "style.css"),
+    forkAwesome: join("assets", "css", "fork-awesome.min.css"),
     red: join("assets", "css", "color", "red.css"),
     blue: join("assets", "css", "color", "blue.css"),
     green: join("assets", "css", "color", "green.css"),

@@ -34,6 +34,22 @@
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Summary | html }}</description>
       <content>{{ .Content | html }}</content>
+      <iwt:extension xmlns:iwt="https://gaborpihaj.com/todo">
+      {{- if in .Params.categories "Microblog post" -}}
+        {{- if not (isset .Params "target_networks") -}}
+          {{- errorf "target_networks must be set in %q" .File.Path -}}
+        {{- end -}}
+        {{- range $network := .Params.target_networks -}}
+          <iwt:targetNetwork>
+            <iwt:targetNetworkName>{{- $network.name -}}</iwt:targetNetworkName>
+          </iwt:targetNetwork>
+        {{- end -}}
+
+        {{- if isset .Params "content_warning" -}}
+        <iwt:contentWarning>{{- .Params.content_warning -}}</iwt:contentWarning>
+        {{- end -}}
+      {{- end -}}
+      </iwt:extension>
     </item>
     {{ end }}
   </channel>
